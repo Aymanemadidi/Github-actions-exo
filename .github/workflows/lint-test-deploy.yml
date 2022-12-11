@@ -1,0 +1,18 @@
+name: "Lint Test Deploy"
+on: [push, workflow_dispatch]
+jobs:
+  Lint-Test-Deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        run: actions/checkout@v3
+      - name: Install dependencies
+        run: npm ci
+      - name: lint
+        run: npm run lint
+      - name: test
+        run: npm run test
+      - name: build
+        run: npm run build
+      - name: deploy
+        run: echo "Deploying Code"
